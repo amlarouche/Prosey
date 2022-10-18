@@ -8,6 +8,13 @@ const { restart } = require('nodemon');
 const PORT = 3000;
 app.use(express.json());
 
+//Database
+const mongoURI = "mongodb+srv://alarouche:Kitchen01@cluster0.oi2zht5.mongodb.net/?retryWrites=true&w=majority"
+mongoose.connect(mongoURI)
+    .then(() => console.log('Connected to MongoDB...'))
+    .catch(err => console.log(err));
+
+
 //Controllers
 const promptController = require('./controllers/promptController')
 
