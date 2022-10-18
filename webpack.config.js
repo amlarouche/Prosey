@@ -5,7 +5,7 @@ module.exports = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "index.html"),
+        template: path.resolve(__dirname, "./client/index.html"),
         filename: "index.html",
     })],
     entry: './client/index.js',
