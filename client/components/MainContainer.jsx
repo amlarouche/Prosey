@@ -14,7 +14,7 @@ class MainContainer extends Component {
         };
         this.generatePrompt = this.generatePrompt.bind(this)
     }
-    
+
     generatePrompt(e) {
         console.log('inside generate prompt')
         axios('/prompts')

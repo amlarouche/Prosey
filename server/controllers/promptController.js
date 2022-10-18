@@ -3,8 +3,7 @@ const promptController = {}
 
 promptController.getPrompt = async (req, res, next) => {
     try {
-    const prompts = ['a', 'b', 'c'];
-    res.locals.newPrompt = prompts[2]
+    res.locals.newPrompt = 'Look, new prompt!'
     console.log('inside prompt controller')
     return next();
     }

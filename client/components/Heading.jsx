@@ -4,7 +4,7 @@ import Button from './Button.jsx'
 const Heading = (props) => {
     return (
         <div className='header'>
-            <h1>Writing Prompt Timeeee</h1>
+            <h1>Prosey: Your Friend for Prompts</h1>
             <Button generatePrompt={props.generatePrompt} text={'Generate Prompt!'}/>
         </div>
     )
