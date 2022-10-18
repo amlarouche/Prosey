@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     plugins: [
         new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "./client/index.html"),
@@ -34,7 +34,7 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            "/api/leaders": "http://localhost:3000"
+            "/": "http://localhost:3000"
         },
         compress: true,
         port: 8080,
