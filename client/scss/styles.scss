@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+// Container Styles
+
+.mainContainer {
+    width: 80%;
+    height: 80%;
+    margin: 10% auto;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "sidebar header header header"
+    "sidebar prompt prompt prompt"
+    "sidebar prompt prompt prompt"
+    "sidebar prompt prompt prompt"; 
+}
+
+.prompt {
+    grid-area: prompt;
+    border: 1px solid black;
+    input {
+        display: block;
+        width: 90%; 
+        height: 75%;
+        margin: 0% auto;
+        padding: 20px;
+    }
+    p {
+        text-align: center;
+    }
+    .buttonWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 12%;
+        button {
+            height: 25px;
+            width: 125px;
+        }
+    }
+}
+
+
+// Headings
+
+.header {
+    grid-area: header;
+    border: 1px solid black;
+    button {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: 50px;
+    }
+    h1 {
+        display: block;
+        text-align: center;
+        margin: 3% auto;
+    }
+}
+
+.sidebar {
+    grid-area: sidebar;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    h2 {
+        text-align: center;
+    }
+}

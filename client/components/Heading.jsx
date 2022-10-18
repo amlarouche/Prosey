@@ -3,7 +3,7 @@ import Button from './Button.jsx'
 
 const Heading = (props) => {
     return (
-        <div>
+        <div className='header'>
             <h1>Writing Prompt Timeeee</h1>
             <Button />
         </div>
