@@ -5,7 +5,7 @@ const Heading = (props) => {
     return (
         <div className='header'>
             <h1>Writing Prompt Timeeee</h1>
-            <Button />
+            <Button generatePrompt={props.generatePrompt} text={'Generate Prompt!'}/>
         </div>
     )
 }
