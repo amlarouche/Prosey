@@ -3,14 +3,14 @@ import EditButton from './EditButton.jsx';
 import DeleteButton from './DeleteButton.jsx';
 
 const PromptComponent = (props) => {
-    const { beingEdited, editValue } = props;
+    const { beingEdited, editValue, deleteVal } = props;
     let { 
         prompt,
         createdAt,
         _id
     } = props.display;
-    prompt = prompt.split('').slice(0, 32).join('');
-    createdAt = createdAt.split('').slice(0, 10).join('');
+    prompt = prompt.slice(0, 32);
+    createdAt = createdAt.slice(0, 10);
     const [checker, clickPrompt] = useState(() => false)
     
     function promptClicked(e) {
@@ -22,7 +22,7 @@ const PromptComponent = (props) => {
             <br/>
             <p>{prompt}...</p>
             {checker && (<div className='displayDiv'>
-                <EditButton editValue={editValue} id={_id}/> <DeleteButton id={_id}/>
+                <EditButton editValue={editValue} id={_id}/> <DeleteButton deleteVal={deleteVal} id={_id}/>
             </div>)}
         </div>
     )

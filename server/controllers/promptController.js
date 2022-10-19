@@ -41,7 +41,7 @@ promptController.editSaved = async (req, res, next) => {
     console.log('why am i here', id)
     try {
         let requested = await Prompt.find({ _id: id });
-        requested = requested[0].prompt
+        requested = requested[0].prompt;
         res.locals.response = requested;
         return next();
     }
@@ -49,6 +49,19 @@ promptController.editSaved = async (req, res, next) => {
         console.log(err);
         return next(err);
     }
+}
+
+promptController.deleteDoc = async (req, res, next) => {
+    try {
+        const { num } = req.body;
+        await Prompt.deleteOne({ _id: num });
+        return next();
+    }
+    catch(err) {
+        console.log(err);
+        return next(err);
+    }
+
 }
 
 module.exports = promptController;

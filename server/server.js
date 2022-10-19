@@ -62,8 +62,16 @@ app.post('/prompts',
 app.patch('/saved',
     savedController.updatePrompt,
     (req, res) => {
-    return res.status(200).json(updated);
+    return res.status(200).json('delete successful');
 } 
+)
+
+//DELETE requests
+app.delete('/prompts',
+    promptController.deleteDoc,
+    (req, res) => {
+        return res.status(200).json('delete successful')
+    }
 )
 
 app.use('/build', express.static(path.join(__dirname, '../build/')))

@@ -19,6 +19,7 @@ class MainContainer extends Component {
         this.savePrompt = this.savePrompt.bind(this);
         this.loadPrompts = this.loadPrompts.bind(this);
         this.editValue = this.editValue.bind(this);
+        this.deleteVal = this.deleteVal.bind(this);
     }
 
     componentDidMount() {
@@ -36,13 +37,13 @@ class MainContainer extends Component {
             })
     }
 
-    savePrompt() {
+    async savePrompt() {
         const field = document.getElementById('input')
         const value = field.value;
         field.value = '';
         console.log(this.state.currentId)
         if (this.state.currentId) {
-            axios.patch('/saved', { _id: this.state.currentId, prompt: value })
+           axios.patch('/saved', { _id: this.state.currentId, prompt: value })
                 .then(res => console.log('here is the resolution', res))
                 .catch(err => console.log(err))
             this.setState({
@@ -51,7 +52,7 @@ class MainContainer extends Component {
             });    
         } 
         else {
-            axios.post('/prompts', {
+        axios.post('/prompts', {
              prompt: value
         })
             .then(res => console.log('here is the resolution', res))
@@ -70,7 +71,6 @@ class MainContainer extends Component {
 
     editValue(num) {
         const field = document.getElementById('input');
-        console.log(num);
         this.setState({
             beingEdited: true,
             currentId: num
@@ -78,13 +78,20 @@ class MainContainer extends Component {
         fetch('/prompts/' + new URLSearchParams({ num }))
             .then((res) => res.json())
             .then(res => field.value = res)
-            .catch(err => console.log('axios error', err))
+            .catch(err => console.log(err))
+    }
+
+    async deleteVal(num) {    
+        await axios.delete('/prompts', { data: { num } })
+            .then(res => console.log(res))
+            .catch(err => console.log('big error', err))
+        this.loadPrompts();
     }
 
     render() {
         return (
         <div className='mainContainer'>
-            <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited} editValue={this.editValue}/>
+            <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited} editValue={this.editValue} deleteVal={this.deleteVal}/>
             <Heading generatePrompt={this.generatePrompt} />
             <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
         </div>
