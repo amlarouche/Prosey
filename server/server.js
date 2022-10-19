@@ -26,8 +26,15 @@ app.get('/', (req, res) => {
 app.get('/prompts', 
     promptController.getPrompt,
     (req, res) => {
-        console.log('inside app.get prompts')
         return res.status(200).json(res.locals.newPrompt)
+    }
+)
+
+//POST requests
+app.post('/prompts',
+    promptController.savePrompt,
+    (req, res) => {
+        return res.status(200);
     }
 )
 

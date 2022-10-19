@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const promptController = {}
 const axios = require('axios')
+const Prompt = require('../models/promptModel')
 
 promptController.getPrompt = async (req, res, next) => {
     try {
@@ -14,10 +15,22 @@ promptController.getPrompt = async (req, res, next) => {
                 return el.split(' ').slice(1).join(' ')
             })
         res.locals.newPrompt = prompts[Math.floor(Math.random() * prompts.length + 1)]
-        console.log('inside prompt controller')
         return next();
     }
-    catch(err){
+    catch(err) {
+        console.log(err);
+        return next(err);
+    }
+}
+
+promptController.savePrompt = async (req, res, next) => {
+    const { prompt } = req.body;
+    try {
+        const newPrompt = await new Prompt.create({ prompt })
+        console.log(newPrompt);
+        next();
+    }
+    catch(err) {
         console.log(err);
         return next(err);
     }

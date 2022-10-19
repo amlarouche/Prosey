@@ -5,6 +5,10 @@ const promptSchema = new Schema({
     prompt: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 })
 

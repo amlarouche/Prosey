@@ -12,14 +12,14 @@ class MainContainer extends Component {
         this.state = {
             prompts: 'Wait for your prompt to be generated!',
         };
-        this.generatePrompt = this.generatePrompt.bind(this)
+        this.generatePrompt = this.generatePrompt.bind(this);
+        this.savePrompt = this.savePrompt.bind(this);
     }
 
     generatePrompt(e) {
-        console.log('inside generate prompt')
         axios('/prompts')
             .then(res => {
-                const prompt = res.data
+                const prompt = res.data;
                 this.setState({ prompts: prompt })
             })
             .catch((err) => {
@@ -27,12 +27,23 @@ class MainContainer extends Component {
             })
     }
 
+    savePrompt(e) {
+        const field = document.getElementById('input')
+        const value = field.value;
+        field.value = '';
+        axios('/prompts', {
+             prompt: value
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
     render() {
         return (
         <div className='mainContainer'>
             <Sidebar />
-            <Heading generatePrompt={this.generatePrompt}/>
-            <PromptContainer prompt={this.state.prompts} />
+            <Heading generatePrompt={this.generatePrompt} />
+            <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
         </div>
         )
     }
