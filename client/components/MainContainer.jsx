@@ -11,9 +11,15 @@ class MainContainer extends Component {
         super();
         this.state = {
             prompts: 'Wait for your prompt to be generated!',
+            promptList: []
         };
         this.generatePrompt = this.generatePrompt.bind(this);
         this.savePrompt = this.savePrompt.bind(this);
+        this.loadPrompts = this.loadPrompts.bind(this);
+    }
+
+    componentDidMount() {
+        this.loadPrompts();
     }
 
     generatePrompt(e) {
@@ -31,17 +37,26 @@ class MainContainer extends Component {
         const field = document.getElementById('input')
         const value = field.value;
         field.value = '';
-        axios('/prompts', {
+        axios.post('/prompts', {
              prompt: value
         })
-            .then(res => console.log(res))
+            .then(res => console.log('here is the resolution', res))
             .catch(err => console.log(err))
+        this.loadPrompts();
+    }
+
+    loadPrompts() {
+        axios('/saved')
+            .then(res => {
+                const list = res.data;
+                this.setState({ promptList: list })
+            })
     }
 
     render() {
         return (
         <div className='mainContainer'>
-            <Sidebar />
+            <Sidebar promptList={this.state.promptList}/>
             <Heading generatePrompt={this.generatePrompt} />
             <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
         </div>

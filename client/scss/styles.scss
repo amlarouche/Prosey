@@ -73,8 +73,11 @@
     grid-area: sidebar;
     border: 1px solid black;
     display: flex;
-    justify-content: center;
     h2 {
-        text-align: center;
+        flex-grow: 1;
+    }
+    .promptCom {
+        font-size: 1vh;
+        flex-grow: 1;
     }
 }

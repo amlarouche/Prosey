@@ -34,7 +34,8 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            "/prompts": "http://localhost:3000"
+            "/prompts": "http://localhost:3000",
+            "/saved": "http://localhost:3000"
         },
         compress: true,
         port: 8080,

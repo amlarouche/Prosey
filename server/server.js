@@ -17,6 +17,7 @@ mongoose.connect(mongoURI)
 
 //Controllers
 const promptController = require('./controllers/promptController')
+const savedController = require('./controllers/savedController')
 
 //GET requests
 app.get('/', (req, res) => {
@@ -30,8 +31,15 @@ app.get('/prompts',
     }
 )
 
+app.get('/saved', 
+    savedController.getList,
+    (req, res) => {
+        return res.status(200).json(res.locals.list)
+    }
+)
+
 //POST requests
-app.post('/prompts',
+app.post('/prompts', 
     promptController.savePrompt,
     (req, res) => {
         return res.status(200);

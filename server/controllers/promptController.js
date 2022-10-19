@@ -26,8 +26,7 @@ promptController.getPrompt = async (req, res, next) => {
 promptController.savePrompt = async (req, res, next) => {
     const { prompt } = req.body;
     try {
-        const newPrompt = await new Prompt.create({ prompt })
-        console.log(newPrompt);
+        await Prompt.create({ prompt })
         next();
     }
     catch(err) {
