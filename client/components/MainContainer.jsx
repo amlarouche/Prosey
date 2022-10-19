@@ -11,7 +11,8 @@ class MainContainer extends Component {
         super();
         this.state = {
             prompts: 'Wait for your prompt to be generated!',
-            promptList: []
+            promptList: [],
+            beingEdited: false
         };
         this.generatePrompt = this.generatePrompt.bind(this);
         this.savePrompt = this.savePrompt.bind(this);
@@ -53,10 +54,12 @@ class MainContainer extends Component {
             })
     }
 
+
+
     render() {
         return (
         <div className='mainContainer'>
-            <Sidebar promptList={this.state.promptList}/>
+            <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited}/>
             <Heading generatePrompt={this.generatePrompt} />
             <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
         </div>
