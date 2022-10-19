@@ -58,6 +58,14 @@ app.post('/prompts',
     }
 )
 
+//PATCH requests
+app.patch('/saved',
+    savedController.updatePrompt,
+    (req, res) => {
+    return res.status(200).json(updated);
+} 
+)
+
 app.use('/build', express.static(path.join(__dirname, '../build/')))
 
 app.use('*', (req, res) => {

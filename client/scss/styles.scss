@@ -73,14 +73,21 @@
     grid-area: sidebar;
     border: 1px solid black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+
     h2 {
         text-align: center;
+        max-height: 50px;
     }
-    .promptCom {
-        font-size: 2vh;
-        flex-grow: 1;
-        padding: 5px 10px;
-        border-top: 1px solid black;
+
+    .sideWrapper{ 
+        overflow-y: auto;
+            .promptCom {
+                font-size: 2vh;
+                padding: 5px 10px;
+                border-top: 1px solid black;
+            }
+        }
     }
-}

@@ -38,7 +38,7 @@ promptController.savePrompt = async (req, res, next) => {
 promptController.editSaved = async (req, res, next) => {
     let { id } = req.params
     id = id.slice(4);
-    console.log(id)
+    console.log('why am i here', id)
     try {
         let requested = await Prompt.find({ _id: id });
         requested = requested[0].prompt

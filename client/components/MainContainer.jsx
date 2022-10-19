@@ -12,7 +12,8 @@ class MainContainer extends Component {
         this.state = {
             prompts: 'Wait for your prompt to be generated!',
             promptList: [],
-            beingEdited: false
+            beingEdited: false,
+            currentId: 0
         };
         this.generatePrompt = this.generatePrompt.bind(this);
         this.savePrompt = this.savePrompt.bind(this);
@@ -35,15 +36,27 @@ class MainContainer extends Component {
             })
     }
 
-    savePrompt(e) {
+    savePrompt() {
         const field = document.getElementById('input')
         const value = field.value;
         field.value = '';
-        axios.post('/prompts', {
+        console.log(this.state.currentId)
+        if (this.state.currentId) {
+            axios.patch('/saved', { _id: this.state.currentId, prompt: value })
+                .then(res => console.log('here is the resolution', res))
+                .catch(err => console.log(err))
+            this.setState({
+                beingEdited: false,
+                currentId: 0
+            });    
+        } 
+        else {
+            axios.post('/prompts', {
              prompt: value
         })
             .then(res => console.log('here is the resolution', res))
             .catch(err => console.log(err))
+        }
         this.loadPrompts();
     }
 
@@ -58,6 +71,10 @@ class MainContainer extends Component {
     editValue(num) {
         const field = document.getElementById('input');
         console.log(num);
+        this.setState({
+            beingEdited: true,
+            currentId: num
+        });
         fetch('/prompts/' + new URLSearchParams({ num }))
             .then((res) => res.json())
             .then(res => field.value = res)

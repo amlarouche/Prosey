@@ -10,9 +10,11 @@ const Sidebar = (props) => {
 
     return (
         <div className='sidebar'>
+            <h2>Previous Prompts</h2>
             <div className='sideWrapper'>
-                <h2>Previous Prompts</h2>
-                {promptsDisplay}
+                <div className='completedWrapper'>
+                    {promptsDisplay}
+                </div>
             </div>
         </div>
     )
