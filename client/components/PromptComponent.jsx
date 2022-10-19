@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EditButton from './EditButton.jsx';
 import DeleteButton from './DeleteButton.jsx';
 
 const PromptComponent = (props) => {
-    const { beingEdited } = props;
+    const { beingEdited, editValue } = props;
     const { 
         prompt,
-        createdAt
+        createdAt,
+        _id
     } = props.display;
 
     const [checker, clickPrompt] = useState(() => false)
@@ -21,7 +22,7 @@ const PromptComponent = (props) => {
             <br/>
             <p>{prompt}</p>
             {checker && (<div className='displayDiv'>
-                <EditButton /> <DeleteButton />
+                <EditButton editValue={editValue} id={_id}/> <DeleteButton id={_id}/>
             </div>)}
         </div>
     )

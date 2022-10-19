@@ -27,7 +27,23 @@ promptController.savePrompt = async (req, res, next) => {
     const { prompt } = req.body;
     try {
         await Prompt.create({ prompt })
-        next();
+        return next();
+    }
+    catch(err) {
+        console.log(err);
+        return next(err);
+    }
+}
+
+promptController.editSaved = async (req, res, next) => {
+    let { id } = req.params
+    id = id.slice(4);
+    console.log(id)
+    try {
+        let requested = await Prompt.find({ _id: id });
+        requested = requested[0].prompt
+        res.locals.response = requested;
+        return next();
     }
     catch(err) {
         console.log(err);

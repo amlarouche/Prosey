@@ -17,6 +17,7 @@ class MainContainer extends Component {
         this.generatePrompt = this.generatePrompt.bind(this);
         this.savePrompt = this.savePrompt.bind(this);
         this.loadPrompts = this.loadPrompts.bind(this);
+        this.editValue = this.editValue.bind(this);
     }
 
     componentDidMount() {
@@ -54,12 +55,19 @@ class MainContainer extends Component {
             })
     }
 
-
+    editValue(num) {
+        const field = document.getElementById('input');
+        console.log(num);
+        fetch('/prompts/' + new URLSearchParams({ num }))
+            .then((res) => res.json())
+            .then(res => field.value = res)
+            .catch(err => console.log('axios error', err))
+    }
 
     render() {
         return (
         <div className='mainContainer'>
-            <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited}/>
+            <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited} editValue={this.editValue}/>
             <Heading generatePrompt={this.generatePrompt} />
             <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
         </div>

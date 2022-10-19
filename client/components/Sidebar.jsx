@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PromptComponent from './PromptComponent.jsx';
 
 const Sidebar = (props) => {
-    const { promptList, beingEdited } = props
+    const { promptList, beingEdited, editValue } = props
     const promptsDisplay = [];
     for (let i = 0; i < promptList.length; i++) {
-        promptsDisplay.push(<PromptComponent key={'a'[i]} display={promptList[i]} beingEdited={beingEdited}/>)
-    }   
+        promptsDisplay.push(<PromptComponent key={'a'[i]} display={promptList[i]} beingEdited={beingEdited} editValue={editValue}/>)
+    }
+
     return (
         <div className='sidebar'>
             <div className='sideWrapper'>

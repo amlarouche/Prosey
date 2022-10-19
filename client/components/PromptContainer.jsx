@@ -8,7 +8,7 @@ const PromptContainer = (props) => {
             <div className='promptWrapper'>
                 <p>{props.prompt}</p>
             </div>
-            <input id='input' type='text' placeholder='Reply to prompt here...'/>
+            <textarea id='input' type='text' placeholder='Reply to prompt here...'/>
             <div className='buttonWrapper'>
                 <SaveButton text={'Save'} savePrompt={props.savePrompt}/>
                 <Button text={'Cancel'}/>
