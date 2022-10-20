@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import 'colors';
+
 * {
     box-sizing: border-box;
     font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
-    background-color: hsl(0, 31%, 88%);
+    background-color: $lightestColor;
     color: hsl(321, 23%, 12%);
-    border-color:hsl(303, 17%, 46%)
 }
 
 button {
@@ -29,7 +30,7 @@ button:active {
 
 .mainContainer {
     width: 80%;
-    height: 80%;
+    height: 90%;
     margin: 5% auto auto auto;
     //border: 1px solid black;
     border-radius: 10px;
@@ -47,7 +48,7 @@ button:active {
 
 .prompt {
     grid-area: prompt;
-    border: 1px solid black;
+    border-color:$darkerColor;
     border-radius: 10px;
 
     #input {
@@ -63,7 +64,7 @@ button:active {
 
     .promptWrapper {
         height: 20%;        
-        padding: 5px;
+        padding-bottom: 2%;
         margin-bottom: 2%;
     }
 
@@ -71,14 +72,15 @@ button:active {
         display: block;
         text-align: center;
         font-size: 2.3vh;
-        margin: 2%;
+        padding: 0 2%;
     }
 
     .buttonWrapper {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        height: 12%;
+        height: 10%;
+        margin-bottom: 5%;
 
         button {
             display: inline-flex;
@@ -93,7 +95,7 @@ button:active {
 
         .cancelButton {
             background-color: hsl(268, 31%, 71%);
-            border: 1px solid hsl(303, 17%, 46%);
+            border: 1px solid $darkerColor;
             color: hsl(303, 17%, 46%);
         }
         
@@ -109,16 +111,19 @@ button:active {
 
 .header {
     grid-area: header;
-    border: 1px solid black;
+    border-color:$darkerColor;
     border-radius: 10px;
     
     button {
         display: block;
-        margin: auto auto 5% auto;
+        margin: 0 auto;
         width: 20%;
         height: 35%;
         font-size: 3vh;
-        padding: 1%;
+        padding: 3%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     h1 {
@@ -130,13 +135,14 @@ button:active {
 
 .sidebar {
     grid-area: sidebar;
-    border: 1px solid black;
-    border-radius: 10px;
+    border-right: 3px solid hsl(321, 25%, 22%);
+    border-radius: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
     justify-content: flex-start;
+    padding-top: 5%;
 
     h3 {
         text-align: center;
@@ -149,9 +155,11 @@ button:active {
 
         .promptCom {
             font-size: 2vh;
-            padding: 5px 10px;
-            border-bottom: 1px solid black;
-            border-radius: 10px;
+            padding: 4% 7% 4% 7%;
+
+            span {
+                font-weight: bold;
+            }
 
             .buttonWrapper {
                 display: flex;
@@ -174,6 +182,15 @@ button:active {
                     border-color: hsl(0, 31%, 88%);
                 }
             }
+        }
+
+        .promptCom:after {
+            content: ""; 
+            display: block; 
+            margin: 0 auto;
+            width: 95%; 
+            padding-top: 5%;
+            border-bottom: 1px solid $darkerColor; 
         }
     }
 }
@@ -218,7 +235,7 @@ button:active {
             height: auto;
             width: auto;
             font-size: 3vh;   
-            margin-top: 5%;
+            margin-top: 3%;
         }
     }
     .prompt {

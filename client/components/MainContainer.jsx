@@ -20,6 +20,7 @@ class MainContainer extends Component {
         this.loadPrompts = this.loadPrompts.bind(this);
         this.editValue = this.editValue.bind(this);
         this.deleteVal = this.deleteVal.bind(this);
+        this.cancelThis = this.cancelThis.bind(this);
     }
 
     componentDidMount() {
@@ -41,7 +42,6 @@ class MainContainer extends Component {
         const field = document.getElementById('input')
         const value = field.value;
         field.value = '';
-        console.log(this.state.currentId)
         if (this.state.currentId) {
            axios.patch('/saved', { _id: this.state.currentId, prompt: value })
                 .then(res => console.log('here is the resolution', res))
@@ -52,11 +52,11 @@ class MainContainer extends Component {
             });    
         } 
         else {
-        axios.post('/prompts', {
-             prompt: value
-        })
-            .then(res => console.log('here is the resolution', res))
-            .catch(err => console.log(err))
+            axios.post('/prompts', {
+                prompt: value
+            })
+                .then(res => console.log('here is the resolution', res))
+                .catch(err => console.log(err))
         }
         this.loadPrompts();
     }
@@ -88,12 +88,22 @@ class MainContainer extends Component {
         this.loadPrompts();
     }
 
+    cancelThis() {
+        const field = document.getElementById('input')
+        const value = field.value;
+        field.value = '';
+        this.setState({
+            beingEdited: false,
+            currentId: 0
+        })
+    }
+
     render() {
         return (
         <div className='mainContainer'>
             <Sidebar promptList={this.state.promptList} beingEdited={this.state.beingEdited} editValue={this.editValue} deleteVal={this.deleteVal}/>
             <Heading generatePrompt={this.generatePrompt} />
-            <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt}/>
+            <PromptContainer prompt={this.state.prompts} savePrompt={this.savePrompt} cancelThis={this.cancelThis}/>
         </div>
         )
     }

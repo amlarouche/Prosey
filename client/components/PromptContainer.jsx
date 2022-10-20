@@ -3,13 +3,6 @@ import SaveButton from './SaveButton.jsx';
 import CancelButton from './CancelButton.jsx';
 
 const PromptContainer = (props) => {
-    //const [clear, setClear] = useState(() => '');
-
-    function cancelThis() {
-        const field = document.getElementById('input')
-        const value = field.value;
-        field.value = '';
-    }
 
     return (
         <div className='prompt'>
@@ -19,7 +12,7 @@ const PromptContainer = (props) => {
             <textarea id='input' type='text' placeholder='Reply to prompt here...'/>
             <div className='buttonWrapper'>
                 <SaveButton text={'Save'} savePrompt={props.savePrompt}/>
-                <CancelButton cancel={cancelThis} text={'Cancel'}/>
+                <CancelButton cancel={props.cancelThis} text={'Cancel'}/>
             </div>
         </div>
     )

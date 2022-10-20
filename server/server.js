@@ -62,7 +62,7 @@ app.post('/prompts',
 app.patch('/saved',
     savedController.updatePrompt,
     (req, res) => {
-    return res.status(200).json('delete successful');
+    return res.status(200).json('patch successful');
 } 
 )
 
