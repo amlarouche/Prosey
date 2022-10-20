@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 const DeleteButton = (props) => {
     return (
-        <button className='smallButton' onClick={() => { props.deleteVal(props.id) }}>Delete</button>
+        <button className='cancelButton' onClick={() => { props.deleteVal(props.id) }}>Delete</button>
     )
 }
 

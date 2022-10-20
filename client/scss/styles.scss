@@ -1,6 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 * {
     box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
 
+body {
+    background-color: hsl(0, 31%, 88%);
+    color: hsl(321, 23%, 12%);
+    border-color:hsl(303, 17%, 46%)
+}
+
+button {
+    background-color: hsl(303, 17%, 46%);
+    border-radius: 5px;
+    border-style: none;
+}
+
+button:hover {
+    background-color: hsl(0, 31%, 88%);
+}
+
+button:active {
+    box-shadow: inset 0px 0px 10px #c1c1c1;
+    outline: none;
 }
 
 // Container Styles
@@ -9,7 +31,8 @@
     width: 80%;
     height: 80%;
     margin: 5% auto auto auto;
-    border: 1px solid black;
+    //border: 1px solid black;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr 1fr; 
@@ -19,28 +42,36 @@
     "sidebar prompt prompt prompt"
     "sidebar prompt prompt prompt"
     "sidebar prompt prompt prompt"; 
+    background-color: hsl(268, 31%, 71%);
 }
 
 .prompt {
     grid-area: prompt;
     border: 1px solid black;
+    border-radius: 10px;
 
     #input {
         display: block;
         width: 90%; 
         height: 60%;
         margin: 0% auto;
-        padding: 20px;
+        padding: 2%;
+        border-style:solid;
+        border-radius: 10px;
+        background-color: #ffffffe8;
     }
 
     .promptWrapper {
         height: 20%;        
         padding: 5px;
+        margin-bottom: 2%;
     }
 
     p {
+        display: block;
         text-align: center;
-        font-size: 2vh
+        font-size: 2.3vh;
+        margin: 2%;
     }
 
     .buttonWrapper {
@@ -50,8 +81,25 @@
         height: 12%;
 
         button {
-            height: 25px;
-            width: 125px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 60%;
+            width: 20%;
+            padding: 2%;
+            font-size: 2.5vh;
+            margin-top: 1%;
+        }
+
+        .cancelButton {
+            background-color: hsl(268, 31%, 71%);
+            border: 1px solid hsl(303, 17%, 46%);
+            color: hsl(303, 17%, 46%);
+        }
+        
+        .cancelButton:hover {
+            color: hsl(0, 31%, 88%);
+            border-color: hsl(0, 31%, 88%);
         }
     }
 }
@@ -62,12 +110,15 @@
 .header {
     grid-area: header;
     border: 1px solid black;
-
+    border-radius: 10px;
+    
     button {
         display: block;
-        margin: 1% auto;
-        width: 150px;
-        height: 50px;
+        margin: auto auto 5% auto;
+        width: 20%;
+        height: 35%;
+        font-size: 3vh;
+        padding: 1%;
     }
 
     h1 {
@@ -80,6 +131,7 @@
 .sidebar {
     grid-area: sidebar;
     border: 1px solid black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,17 +140,94 @@
 
     h3 {
         text-align: center;
-        max-height: 50px;
         padding: 10px;
     }
 
     .sideWrapper{ 
         overflow-y: auto;
+        height: 100%;
 
-            .promptCom {
-                font-size: 2vh;
-                padding: 5px 10px;
-                border-bottom: 1px solid black;
+        .promptCom {
+            font-size: 2vh;
+            padding: 5px 10px;
+            border-bottom: 1px solid black;
+            border-radius: 10px;
+
+            .buttonWrapper {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+
+                button {
+                    padding: 2%;
+                    width: 25%;
+                }
+
+                .cancelButton {
+                    background-color: hsl(268, 31%, 71%);
+                    border: 1px solid hsl(303, 17%, 46%);
+                    color: hsl(303, 17%, 46%);
+                }
+                
+                .cancelButton:hover {
+                    color: hsl(0, 31%, 88%);
+                    border-color: hsl(0, 31%, 88%);
+                }
             }
         }
     }
+}
+
+@media screen and (max-width: 500px) {
+    * {
+        font-size: 1.2vh;
+    }
+    .header {
+
+        h1 {
+            font-size: 3.5vh;
+        }
+        button {
+            height: auto;
+            width: auto;
+            font-size: 3vh;   
+            margin-top: 5%;
+        }
+    }
+    .prompt {
+        #input {
+            font-size: 2vh;
+            padding: 5%;
+        }
+        p {
+            font-size: 1.1vh;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    * {
+        font-size: 1.2vh;
+    }
+    .header {
+
+        h1 {
+            font-size: 3.5vh;
+        }
+        button {
+            height: auto;
+            width: auto;
+            font-size: 3vh;   
+            margin-top: 5%;
+        }
+    }
+    .prompt {
+        #input {
+            font-size: 2vh;
+            padding: 5%;
+        }
+        p {
+            font-size: 1.1vh;
+        }
+    }
+}

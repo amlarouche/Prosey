@@ -21,8 +21,8 @@ const PromptComponent = (props) => {
             <span>Created: {createdAt}</span>
             <br/>
             <p>{prompt}...</p>
-            {checker && (<div className='displayDiv'>
-                <EditButton editValue={editValue} id={_id}/> <DeleteButton deleteVal={deleteVal} id={_id}/>
+            {checker && (<div className='displayDiv buttonWrapper'>
+                    <EditButton editValue={editValue} id={_id}/> <DeleteButton deleteVal={deleteVal} id={_id}/>
             </div>)}
         </div>
     )
