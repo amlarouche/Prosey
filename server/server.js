@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Database
-const mongoURI = "mongodb+srv://alarouche:Kitchen01@cluster0.oi2zht5.mongodb.net/?retryWrites=true&w=majority"
-mongoose.connect(mongoURI)
+const uri = process.env.MONGODB_URI
+mongoose.connect(uri)
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.log(err));
 
