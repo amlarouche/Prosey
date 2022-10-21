@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Database
-const uri = process.env.MONGODB_URI
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri)
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.log(err));

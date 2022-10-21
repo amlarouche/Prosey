@@ -223,28 +223,55 @@ button:active {
         }
 
         button {
-            font-size: 1vh;
+            height: auto;
+            width: auto;
+            font-size: .5vh;
+        }
+    }
+    .promptCom {
+        font-size: 2vh;
+        padding: 4% 7% 4% 7%;
+
+        span {
+            font-weight: bold;
+        }
+
+        .buttonWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                padding: 2%;
+                margin-bottom: 1%;
+                width: 75% !important;
+                font-size: 1vh !important;
+            }
         }
     }
 }
 
 @media screen and (max-width: 1000px) {
     * {
-        font-size: 1.2vh;
+        font-size: 1vh;
     }
+
     .header {
 
         h1 {
             font-size: 3.5vh;
         }
+
         button {
             height: auto;
             width: auto;
-            font-size: 3vh;   
+            font-size: 2vh !important;   
             margin-top: 3%;
         }
     }
+
     .prompt {
+        
         #input {
             font-size: 2vh;
             padding: 5%;
@@ -253,8 +280,36 @@ button:active {
             font-size: 1.1vh;
         }
 
-        button {
-            font-size: 1vh;
+        .buttonClass {
+            width: 25% !important;
+            font-size: 1.5vh!important;
+            
+        }
+
+        .cancelButton {
+            width: 25% !important;
+            font-size: 1.5vh!important;
+        }
+    }
+    .promptCom {
+        font-size: 2vh;
+        padding: 4% 7% 4% 7%;
+
+        span {
+            font-weight: bold;
+        }
+
+        .buttonWrapper {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-evenly;
+
+            button {
+                padding: 2%;
+                width: 25%;
+                font-size: 2vh;
+            }
         }
     }
 }
