@@ -124,6 +124,7 @@ button:active {
         display: flex;
         align-items: center;
         justify-content: center;
+        
     }
 
     h1 {
@@ -169,6 +170,7 @@ button:active {
                 button {
                     padding: 2%;
                     width: 25%;
+                    font-size: 2vh;
                 }
 
                 .cancelButton {
@@ -219,6 +221,10 @@ button:active {
         p {
             font-size: 1.1vh;
         }
+        
+        button {
+            font-size: 2vh;
+        }
     }
 }
 
@@ -245,6 +251,10 @@ button:active {
         }
         p {
             font-size: 1.1vh;
+        }
+
+        button {
+            font-size: 2vh;
         }
     }
 }
